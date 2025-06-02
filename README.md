@@ -84,3 +84,65 @@ Cómo enviar y recibir información en formato JSON (el más común en APIs).
 
 Cómo separar el código en partes reutilizables y fáciles de entender.
 
+------
+
+API Gestor de Tareas - FastAPI + POO
+Una API REST sencilla para gestionar tareas, aplicando los 4 pilares de la Programación Orientada a Objetos.
+🎯 Características
+
+✅ CRUD completo de tareas (Crear, Leer, Actualizar, Eliminar)
+✅ 3 tipos de tareas: Simple, Prioritaria, Con fecha límite
+✅ Estados de tareas: Pendiente, En progreso, Completada
+✅ Estadísticas y filtros
+✅ Documentación automática con Swagger UI
+
+🏗️ Pilares de POO Implementados
+1. Encapsulación 🔒
+
+Atributos privados en las clases (_id, _titulo, etc.)
+Getters y setters para controlar el acceso
+Validación de datos en los setters
+
+2. Abstracción 🎭
+
+Clase abstracta TareaBase con método obtener_info_especifica()
+Interface simple del GestorTareas que oculta la complejidad interna
+Separación clara entre lógica de negocio y endpoints
+
+3. Herencia 🌳
+
+TareaSimple, TareaPrioritaria y TareaConFecha heredan de TareaBase
+Reutilización de código común
+Especialización de comportamientos
+
+4. Polimorfismo 🎪
+
+Método obtener_info_especifica() implementado diferente en cada subclase
+marcar_completada() sobrescrito en TareaPrioritaria
+El gestor maneja todos los tipos de tareas uniformemente
+
+📁 Estructura del Proyecto
+todo_api/
+│
+├── main.py                 # App FastAPI + endpoints
+├── models.py              # Clases POO (TareaBase y variantes)
+├── gestor.py              # Clase GestorTareas (lógica)
+├── schemas.py             # Modelos Pydantic (validación)
+└── README.md              # Documentación
+🚀 Instalación y Uso
+1. Instalar dependencias
+bashpip install fastapi uvicorn pydantic
+2. Ejecutar el servidor
+bashpython main.py
+3. Acceder a la documentación
+
+Swagger UI: http://localhost:8000/docs
+ReDoc: http://localhost:8000/redoc
+
+📊 Endpoints Principales
+Tareas
+
+POST /tareas - Crear nueva tarea
+GET /tareas - Listar todas las tareas
+GET /tareas/{id} - Obtener tarea específica
+PUT /tareas/{id} - Actualizar tarea
